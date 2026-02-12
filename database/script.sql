@@ -1,4 +1,4 @@
-
+﻿
 
 --Conditional drop
 IF OBJECT_ID('Workouts', 'U') IS NOT NULL
@@ -35,8 +35,8 @@ CREATE TABLE Workouts (
     WorkoutDate DATETIME NOT NULL,
     DurationMinutes INT NOT NULL,
     CaloriesBurned INT NOT NULL,
-    Difficulty INT CHECK (Difficulty BETWEEN 1 AND 10),
-    Fatigue INT CHECK (Fatigue BETWEEN 1 AND 10),
+    Difficulty INT NOT NULL CHECK (Difficulty BETWEEN 1 AND 10),
+    Fatigue INT NOT NULL CHECK (Fatigue BETWEEN 1 AND 10),
     Notes NVARCHAR(1000) NULL,
     CreatedAt DATETIME DEFAULT GETDATE(),
     IsDeleted BIT NOT NULL DEFAULT 0,
@@ -44,3 +44,30 @@ CREATE TABLE Workouts (
     CONSTRAINT FK_Workouts_Users FOREIGN KEY (UserId) REFERENCES Users(Id),
     CONSTRAINT FK_Workouts_ExerciseTypes FOREIGN KEY (ExerciseTypeId) REFERENCES ExerciseTypes(Id)
 );
+
+
+--mock insert
+INSERT INTO ExerciseTypes (Name) VALUES 
+('Cardio'), 
+('Strength Training'), 
+('Flexibility'), 
+('HIIT'), 
+('Yoga');
+
+-- Napomena: Lozinke su ovde plain text samo za potrebe mock-a, kasnije ćemo raditi hashing.
+INSERT INTO Users (FirstName, LastName, Email, UserPassword, Gender) VALUES 
+('Marko', 'Markovic', 'marko@email.com', 'lozinka123', 'Male'),
+('Jelena', 'Jankovic', 'jelena@email.com', 'lozinka123', 'Female'),
+('Ivan', 'Ivanovic', 'ivan@email.com', 'lozinka123', 'Male'),
+('Milica', 'Milovanovic', 'milica@email.com', 'lozinka123', 'Female'),
+('Sasa', 'Simic', 'sasa@email.com', 'lozinka123', 'Other');
+
+
+INSERT INTO Workouts (UserId, ExerciseTypeId, WorkoutDate, DurationMinutes, CaloriesBurned, Difficulty, Fatigue, Notes) VALUES 
+(1, 1, '2024-05-01 08:00:00', 45, 400, 5, 4, 'Jutarnje trčanje na traci'),
+(1, 2, '2024-05-03 17:30:00', 60, 350, 8, 7, 'Trening snage - noge'),
+(1, 4, '2024-05-05 10:00:00', 30, 500, 9, 9, 'Težak HIIT trening'),
+(1, 3, '2024-05-08 18:00:00', 20, 100, 2, 2, 'Istezanje posle posla'),
+(2, 2, '2024-05-02 16:00:00', 50, 300, 6, 5, 'Jelenin trening snage');
+
+
