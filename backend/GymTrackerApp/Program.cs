@@ -1,7 +1,9 @@
 using GymTrackerApp.interfaces;
+using GymTrackerApp.Interfaces;
 using GymTrackerApp.Models;
 using GymTrackerApp.Profiles;
 using GymTrackerApp.Repositories;
+using GymTrackerApp.Services;
 using Microsoft.EntityFrameworkCore; 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +20,10 @@ builder.Services.AddAutoMapper(cfg =>
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IWorkoutRepository, WorkoutRepository>();
 builder.Services.AddScoped<IExerciseTypeRepository, ExerciseTypeRepository>();
+
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IWorkoutService, WorkoutService>();
+builder.Services.AddScoped<IExerciseTypeService, ExerciseTypeService>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

@@ -18,6 +18,8 @@ namespace GymTrackerApp.Profiles
             CreateMap<Workout, WorkoutDto>()
                 .ForMember(dest => dest.ExerciseTypeName,
                            opt => opt.MapFrom(src => src.ExerciseType.Name));
+
+            CreateMap<ExerciseType, ExerciseTypeDto>();
         }
     }
 }

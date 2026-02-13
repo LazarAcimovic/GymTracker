@@ -22,7 +22,7 @@ namespace GymTrackerApp.Repositories
         }
 
 
-        public async Task<IEnumerable<Workout>> GetWorkoutsByUserIdAsync(int userId, int month, int year)
+        public async Task<IEnumerable<Workout>> GetWorkoutsByMonthAsync(int userId, int month, int year)
         {
             return await _context.Workouts
                 .Include(w => w.ExerciseType) // Navigacija ka tipu vežbe
