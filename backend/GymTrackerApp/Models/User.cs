@@ -11,9 +11,9 @@ public partial class User
 
     public required string LastName { get; set; }
 
-    public required string Email { get; set; } = null!;
+    public required string Email { get; set; }
 
-    public required string UserPassword { get; set; } = null!;
+    public required string UserPassword { get; set; }
 
     public required string Gender { get; set; }
 
