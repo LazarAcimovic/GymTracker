@@ -1,6 +1,6 @@
 ﻿using GymTrackerApp.Models;
 
-namespace GymTrackerApp.interfaces
+namespace GymTrackerApp.Interfaces
 {
     public interface IExerciseTypeRepository
     {

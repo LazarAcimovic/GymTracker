@@ -1,4 +1,4 @@
-﻿using GymTrackerApp.interfaces;
+﻿using GymTrackerApp.Interfaces;
 using GymTrackerApp.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -36,6 +36,13 @@ namespace GymTrackerApp.Repositories
         public async Task AddWorkoutAsync(Workout workout)
         {
             await _context.Workouts.AddAsync(workout);
+        }
+
+        public async Task<Workout?> GetWorkoutByIdAsync(int id)
+        {
+            return await _context.Workouts
+                .Include(w => w.ExerciseType) 
+                .FirstOrDefaultAsync(w => w.Id == id);
         }
 
         public async Task<bool> SaveChangesAsync()

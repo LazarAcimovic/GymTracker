@@ -1,6 +1,6 @@
 ﻿using GymTrackerApp.Dtos;
 
-namespace GymTrackerApp.interfaces
+namespace GymTrackerApp.Interfaces
 {
     public interface IUserService
     {

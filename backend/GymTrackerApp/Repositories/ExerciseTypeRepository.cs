@@ -1,4 +1,4 @@
-﻿using GymTrackerApp.interfaces;
+﻿using GymTrackerApp.Interfaces;
 using GymTrackerApp.Models;
 using Microsoft.EntityFrameworkCore;
 

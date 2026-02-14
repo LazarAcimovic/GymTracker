@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using GymTrackerApp.Dtos;
-using GymTrackerApp.interfaces;
 using GymTrackerApp.Interfaces;
 using GymTrackerApp.Models;
 using System.Globalization;
@@ -29,7 +28,9 @@ namespace GymTrackerApp.Services
             await _workoutRepository.AddWorkoutAsync(workout);
             await _workoutRepository.SaveChangesAsync();
 
-            return _mapper.Map<WorkoutDto>(workout);
+            var savedWorkout = await _workoutRepository.GetWorkoutByIdAsync(workout.Id);
+
+            return _mapper.Map<WorkoutDto>(savedWorkout);
         }
 
         public async Task<IEnumerable<WorkoutDto>> GetAllWorkoutsByUserIdAsync(int userId)

@@ -1,4 +1,4 @@
-﻿using GymTrackerApp.interfaces;
+﻿using GymTrackerApp.Interfaces;
 using GymTrackerApp.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 

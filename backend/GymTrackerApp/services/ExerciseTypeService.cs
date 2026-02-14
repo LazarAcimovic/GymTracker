@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using GymTrackerApp.Dtos;
-using GymTrackerApp.interfaces;
+using GymTrackerApp.Interfaces;
 using GymTrackerApp.Interfaces;
 
 namespace GymTrackerApp.Services
