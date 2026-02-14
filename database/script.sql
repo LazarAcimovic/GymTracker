@@ -54,13 +54,13 @@ INSERT INTO ExerciseTypes (Name) VALUES
 ('HIIT'), 
 ('Yoga');
 
--- Napomena: Lozinke su ovde plain text samo za potrebe mock-a, kasnije ćemo raditi hashing.
+
 INSERT INTO Users (FirstName, LastName, Email, UserPassword, Gender) VALUES 
 ('Marko', 'Markovic', 'marko@email.com', 'lozinka123', 'Male'),
 ('Jelena', 'Jankovic', 'jelena@email.com', 'lozinka123', 'Female'),
 ('Ivan', 'Ivanovic', 'ivan@email.com', 'lozinka123', 'Male'),
 ('Milica', 'Milovanovic', 'milica@email.com', 'lozinka123', 'Female'),
-('Sasa', 'Simic', 'sasa@email.com', 'lozinka123', 'Other');
+('Sasa', 'Simic', 'sasa@email.com', 'lozinka123', 'Male');
 
 
 INSERT INTO Workouts (UserId, ExerciseTypeId, WorkoutDate, DurationMinutes, CaloriesBurned, Difficulty, Fatigue, Notes) VALUES 
@@ -69,5 +69,6 @@ INSERT INTO Workouts (UserId, ExerciseTypeId, WorkoutDate, DurationMinutes, Calo
 (1, 4, '2024-05-05 10:00:00', 30, 500, 9, 9, 'Težak HIIT trening'),
 (1, 3, '2024-05-08 18:00:00', 20, 100, 2, 2, 'Istezanje posle posla'),
 (2, 2, '2024-05-02 16:00:00', 50, 300, 6, 5, 'Jelenin trening snage');
+
 
 

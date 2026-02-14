@@ -40,9 +40,11 @@ namespace GymTrackerApp.Services
             {
                 Subject = new ClaimsIdentity(new[]
                 {
-                    new Claim(JwtRegisteredClaimNames.Sub, userAccount.Email),
+                    //new Claim(JwtRegisteredClaimNames.Sub, userAccount.Email),
+                    new Claim("email", userAccount.Email),
+                    new Claim("id", userAccount.Id.ToString()),
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                    new Claim(ClaimTypes.NameIdentifier, userAccount.Id.ToString()),
+                   // new Claim(ClaimTypes.NameIdentifier, userAccount.Id.ToString()),
                 }),
                 Expires = tokenExpiryTimeStamp,
                 Issuer = issuer,

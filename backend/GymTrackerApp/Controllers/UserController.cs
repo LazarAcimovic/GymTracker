@@ -1,4 +1,5 @@
 ﻿using GymTrackerApp.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GymTrackerApp.Controllers
@@ -14,10 +15,16 @@ namespace GymTrackerApp.Controllers
             _userService = userService;
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetUserProfile(int id)
+        [Authorize]
+        [HttpGet("me")]
+        public async Task<IActionResult> GetUserProfile()
         {
-            var user = await _userService.GetUserByIdAsync(id);
+            var userIdClaim = User.FindFirst("id")?.Value;
+            if (userIdClaim == null) return Unauthorized();
+
+            int userId = int.Parse(userIdClaim);
+
+            var user = await _userService.GetUserByIdAsync(userId);
             if (user == null) return NotFound("Korisnik nije pronađen.");
 
             return Ok(user);

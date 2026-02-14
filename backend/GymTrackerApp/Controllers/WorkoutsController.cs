@@ -1,9 +1,12 @@
 ﻿using GymTrackerApp.Dtos;
 using GymTrackerApp.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace GymTrackerApp.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class WorkoutsController : ControllerBase
@@ -15,25 +18,40 @@ namespace GymTrackerApp.Controllers
             _workoutService = workoutService;
         }
 
-        [HttpGet("user/{userId}")]
-        public async Task<IActionResult> GetUserWorkouts(int userId)
+        [HttpGet("myWorkouts")]
+        public async Task<IActionResult> GetUserWorkouts()
         {
+            var userIdClaim = User.FindFirst("id")?.Value;
+            if (userIdClaim == null) return Unauthorized();
+
+            int userId = int.Parse(userIdClaim);
+
             var workouts = await _workoutService.GetAllWorkoutsByUserIdAsync(userId);
             return Ok(workouts);
         }
 
-        [HttpPost("{userId}")]
-        public async Task<IActionResult> CreateWorkout(int userId, [FromBody] WorkoutCreateDto workoutDto)
+        [HttpPost]
+        public async Task<IActionResult> CreateWorkout([FromBody] WorkoutCreateDto workoutDto)
         {
             if (workoutDto == null) return BadRequest();
+
+            var userIdClaim = User.FindFirst("id")?.Value;
+            if (userIdClaim == null) return Unauthorized();
+
+            int userId = int.Parse(userIdClaim);
 
             var result = await _workoutService.AddWorkoutAsync(workoutDto, userId);
             return Ok(result);
         }
 
-        [HttpGet("stats/{userId}/{month}/{year}")]
-        public async Task<IActionResult> GetWeeklyStats(int userId, int month, int year)
+        [HttpGet("stats/{month}/{year}")]
+        public async Task<IActionResult> GetWeeklyStats(int month, int year)
         {
+            var userIdClaim = User.FindFirst("id")?.Value;
+            if (userIdClaim == null) return Unauthorized();
+
+            int userId = int.Parse(userIdClaim);
+
             var stats = await _workoutService.GetWeeklyProgressAsync(userId, month, year);
             return Ok(stats);
         }
