@@ -18,6 +18,7 @@ export interface LoginResponse {
   email: string;
   accessToken: string;
   expiresIn: number;
+  gender: string;
 }
 
 export interface UserRegister {

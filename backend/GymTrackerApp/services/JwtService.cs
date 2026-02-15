@@ -65,7 +65,8 @@ namespace GymTrackerApp.Services
                 AccessToken = accessToken,
                 ExpiresIn = (int)tokenExpiryTimeStamp.Subtract(DateTime.UtcNow).TotalSeconds,
                 FirstName = userAccount.FirstName,
-                LastName = userAccount.LastName
+                LastName = userAccount.LastName,
+                Gender = userAccount.Gender
             };
         }
     }

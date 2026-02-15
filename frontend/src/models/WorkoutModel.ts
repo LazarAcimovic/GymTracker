@@ -26,3 +26,8 @@ export interface WeeklyProgress {
   averageDifficulty: number;
   averageFatigue: number;
 }
+
+export interface ExerciseType {
+  id: number;
+  name: string;
+}
