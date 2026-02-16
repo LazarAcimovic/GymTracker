@@ -9,7 +9,7 @@ import ProtectedRoute from "../components/common/ProtectedRoute";
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />, // Ovde je tvoj Navbar i Outlet
+    element: <App />, 
     children: [
       {
         index: true,
