@@ -140,7 +140,6 @@ const WorkoutsPage: React.FC = () => {
       y: {
         beginAtZero: activeMetric === "count",
         suggestedMax: activeMetric === "count" ? 6 : undefined,
-
         title: {
           display: true,
           text: metricConfig[activeMetric].label,
@@ -154,10 +153,7 @@ const WorkoutsPage: React.FC = () => {
           stepSize: activeMetric === "count" ? 1 : undefined,
           precision: activeMetric === "count" ? 0 : undefined,
           callback: function (value: any) {
-            if (activeMetric === "count") {
-              return Math.floor(value) === value ? value : null;
-            }
-            return value;
+            return parseFloat(Number(value).toFixed(2));
           },
         },
       },
