@@ -38,7 +38,7 @@ namespace GymTrackerApp.Repositories
             await _context.Workouts.AddAsync(workout);
         }
 
-        public async Task<Workout?> GetWorkoutByIdAsync(int id)
+        public async Task<Workout> GetWorkoutByIdAsync(int id)
         {
             return await _context.Workouts
                 .Include(w => w.ExerciseType) 

@@ -61,14 +61,14 @@ namespace GymTrackerApp.Services
             return weeklyData;
         }
 
-        private static int GetWeekOfMonth(DateTime date)
+        private static int GetWeekOfMonth(DateTime date)////2026-02-15 00:00:00.000
         {
-            DateTime firstDayOfMonth = new DateTime(date.Year, date.Month, 1);
+            DateTime firstDayOfMonth = new DateTime(date.Year, date.Month, 1); //2026-02-01
             int firstWeekOfYear = CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(
-                firstDayOfMonth, CalendarWeekRule.FirstDay, DayOfWeek.Monday);
+                firstDayOfMonth, CalendarWeekRule.FirstDay, DayOfWeek.Monday); //5
 
             int currentWeekOfYear = CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(
-                date, CalendarWeekRule.FirstDay, DayOfWeek.Monday);
+                date, CalendarWeekRule.FirstDay, DayOfWeek.Monday); //7
 
             return currentWeekOfYear - firstWeekOfYear + 1;
         }

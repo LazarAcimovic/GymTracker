@@ -17,9 +17,10 @@ const LoginPage: React.FC = () => {
     setLoading(true);
 
     const success = await login(email, password);
+    console.log(document.cookie);
 
     if (success) {
-      navigate("/workouts"); 
+      navigate("/workouts");
     } else {
       setError("Neispravni podaci za prijavu. Pokušajte ponovo.");
     }

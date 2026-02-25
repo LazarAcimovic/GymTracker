@@ -55,7 +55,7 @@ namespace GymTrackerApp.Services
             };
 
             var tokenHandler = new JwtSecurityTokenHandler();
-            var securityToken = tokenHandler.CreateToken(tokenDescriptor);
+            var securityToken = tokenHandler.CreateToken(tokenDescriptor); //key signature
             var accessToken = tokenHandler.WriteToken(securityToken);
 
             return new LoginResponseDto
