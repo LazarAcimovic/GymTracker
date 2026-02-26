@@ -272,7 +272,6 @@ const WorkoutsPage: React.FC = () => {
                   Umor: <strong className="glow-red">{w.fatigue}/10</strong>
                 </p>
               </div>
-              {/* Prikazujemo belešku samo ako postoji */}
               {w.notes && <p className="workout-notes">{w.notes}</p>}
             </div>
           ))
@@ -287,6 +286,7 @@ const WorkoutsPage: React.FC = () => {
           <div className="modal-content">
             <h2 className="glow-green">NOVI TRENING</h2>
             <form onSubmit={handleSubmit}>
+              {/* TIP VEŽBE */}
               <div className="form-group">
                 <label>Tip Vežbe</label>
                 <select
@@ -309,6 +309,22 @@ const WorkoutsPage: React.FC = () => {
                     <option disabled>Učitavanje tipova...</option>
                   )}
                 </select>
+              </div>
+
+              <div className="form-group">
+                <label>Datum treninga</label>
+                <input
+                  type="date"
+                  className="form-input"
+                  value={formData.workoutDate}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      workoutDate: e.target.value,
+                    })
+                  }
+                  required
+                />
               </div>
 
               <div style={{ display: "flex", gap: "10px" }}>

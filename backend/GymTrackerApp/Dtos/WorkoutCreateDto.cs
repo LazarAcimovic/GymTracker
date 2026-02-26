@@ -8,6 +8,6 @@
         public int CaloriesBurned { get; set; }
         public int Difficulty { get; set; }
         public int Fatigue { get; set; }
-        public string? Notes { get; set; }
+        public string Notes { get; set; }
     }
 }
